@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modules>
+  <module moduleId="org.eclipse.jst.jee.server:HelloWorldJSP" serverId="Tomcat v10.1 Server at localhost (2)"/>
+  <module moduleId="org.eclipse.jst.jee.server:LifeCycleServlet2" serverId="Tomcat v10.1 Server at localhost (2)"/>
+  <module moduleId="org.eclipse.jst.jee.server:registration-jsp-servlet-jdbc-example" serverId="Tomcat v9.0 Server at localhost"/>
+</modules>

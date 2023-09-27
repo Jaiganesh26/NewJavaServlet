@@ -1,0 +1,5 @@
+127.0.0.1 - - [20/Sep/2023:17:58:06 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [20/Sep/2023:17:58:07 +0530] "GET /LifeCycleServlet/viewemployee HTTP/1.1" 200 108
+0:0:0:0:0:0:0:1 - - [20/Sep/2023:18:03:16 +0530] "GET /LifeCycleServlet/WEB-INF/index.html HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [20/Sep/2023:18:03:42 +0530] "GET /LifeCycleServlet/ HTTP/1.1" 404 772
+0:0:0:0:0:0:0:1 - - [20/Sep/2023:18:03:58 +0530] "GET /LifeCycleServlet/viewemployee HTTP/1.1" 200 108

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;FirstServletApplication/src/main/webapp/WEB-INF/LifeCycleServlet.jsp&apos; to &apos;LifeCycleServlet.html&apos;" description="Rename resource &apos;LifeCycleServlet.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/LifeCycleServlet.jsp" name="LifeCycleServlet.html" stamp="1694755099205" updateReferences="true"/>
+</session>
