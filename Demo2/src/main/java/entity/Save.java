@@ -27,14 +27,14 @@ public class Save extends HttpServlet {
 		response.setContentType("text/html");
 		
 		// Getting the input data from the form and storing them into variables
-		int id = Integer.parseInt(request.getParameter("id"));
+	//	int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		int age = Integer.parseInt(request.getParameter("age"));
 		
 		Member m = new Member(); // Create a new object to store values through
 		// Adding data into the object just created
-		m.setId(id);
+	//	m.setId(id);
 		m.setName(name);
 		m.setEmail(email);
 		m.setAge(age);

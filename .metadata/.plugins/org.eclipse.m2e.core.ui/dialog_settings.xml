@@ -6,11 +6,19 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="jsp-servlet-jdbc-mysql-example2"/>
+			<item value="JwtDemo"/>
+			<item value="LoginPage"/>
+			<item value="Login_Page"/>
 			<item value="index"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="jsp-servlet-jdbc-mysql-example2"/>
+			<item value="JwtDemo"/>
+			<item value="LoginPage"/>
+			<item value="Login_Page"/>
 			<item value="index"/>
 		</list>
 		<list key="version">
@@ -19,6 +27,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\ganes\eclipse-workspace\AjaxCall"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -60,11 +69,13 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="DependentDropdownList"/>
 			<item value="Registration"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="DependentDropdownList"/>
 			<item value="Resgistration"/>
 		</list>
 		<list key="projectNameTemplate">

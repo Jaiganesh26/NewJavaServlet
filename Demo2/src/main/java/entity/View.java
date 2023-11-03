@@ -18,17 +18,15 @@ public class View extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Displays All Members
-		
-		response.setContentType("text/html");
-		
-		// Getting all Members in an Array List
-		List<Member> list = MemberDao.getAllMembers();
-		System.out.println("List size: " + list.size());
-		request.setAttribute("list", list); // Sending the ArrayList with the name "list" to be used in the jsp/jstl
-		request.getRequestDispatcher("view.jsp").forward(request, response); // render view.jsp
-		
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Retrieve the list of members using the MemberDao
+        List<Member> members = MemberDao.getAllMembers();
+
+        // Set the list of members as an attribute in the request
+        request.setAttribute("list", members);
+
+        // Forward the request to the JSP page
+        request.getRequestDispatcher("view.jsp").forward(request, response);
+    }
 
 }

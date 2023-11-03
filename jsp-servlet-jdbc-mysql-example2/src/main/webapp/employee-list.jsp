@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.model.Employee" %> <!-- Import the List class -->
 <!DOCTYPE html>
-<html>
-
 <head>
     <title>Employee Management Application</title>
     <link rel="stylesheet"
@@ -10,15 +9,12 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
 </head>
-
 <body>
-
     <header>
         <nav class="navbar navbar-expand-md navbar-dark" style="background-color: tomato">
             <div>
-                <a href="https://www.javaguides.net" class="navbar-brand"> Employee Management Application </a>
+                <a href="https://www.javaguides.net" class="navbar-brand"> Employee Management </a>
             </div>
-
             <ul class="navbar-nav">
                 <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Employees</a></li>
             </ul>
@@ -47,24 +43,30 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="employee" items="${listEmployee}">
+                <%
+                    List<Employee> listEmployee = (List<Employee>) request.getAttribute("listEmployee");
+                    if (listEmployee != null) {
+                        for (Employee employee : listEmployee) {
+                %>
                     <tr>
-                        <td><c:out value="${employee.Employee_No}" /></td>
-                        <td><c:out value="${employee.First_Name}" /></td>
-                        <td><c:out value="${employee.Last_Name}" /></td>
-                        <td><c:out value="${employee.Designation}" /></td>
-                        <td><c:out value="${employee.DOB}" /></td>
-                        <td><c:out value="${employee.Email}" /></td>
-                        <td><c:out value="${employee.Mobile_No}" /></td>
+                        <td><%= employee.getEmployee_No() %></td>
+                        <td><%= employee.getFirst_Name() %></td>
+                        <td><%= employee.getLast_Name() %></td>
+                        <td><%= employee.getDesignation() %></td>
+                        <td><%= employee.getDOB() %></td>
+                        <td><%= employee.getEmail() %></td>
+                        <td><%= employee.getMobile_No() %></td>
                         <td>
-                            <a href="<%=request.getContextPath()%>/edit?Employee_No=${employee.Employee_No}" class="btn btn-primary">Edit</a>
-                            <a href="<%=request.getContextPath()%>/delete?Employee_No=${employee.Employee_No}" class="btn btn-danger">Delete</a>
+                            <a href="<%=request.getContextPath()%>/edit?Employee_No=<%= employee.getEmployee_No() %>" class="btn btn-primary">Edit</a>
+                            <a href="<%=request.getContextPath()%>/delete?Employee_No=<%= employee.getEmployee_No() %>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
-                </c:forEach>
+                <%
+                        }
+                    }
+                %>
             </tbody>
         </table>
     </div>
 </body>
-
 </html>

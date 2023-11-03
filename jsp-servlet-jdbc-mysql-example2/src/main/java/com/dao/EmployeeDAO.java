@@ -18,8 +18,7 @@ public class EmployeeDAO {
             "SELECT Employee_No, First_Name, Last_Name, Designation, DOB, Email, Mobile_No FROM employee WHERE Employee_No = ?;";
     private static final String SELECT_ALL_EMPLOYEE = "SELECT * FROM employee";
     private static final String DELETE_EMPLOYEE_SQL = "DELETE FROM employee WHERE Employee_No = ?;";
-    private static final String UPDATE_EMPLOYEE_SQL =
-            "UPDATE employee SET First_Name = ?, Last_Name = ?, Designation = ?, DOB = ?, Email = ?, Mobile_No = ? WHERE Employee_No = ?;";
+    private static final String UPDATE_EMPLOYEE_SQL ="UPDATE employee SET First_Name = ?, Last_Name = ?, Designation = ?, DOB = ?, Email = ?, Mobile_No = ? WHERE Employee_No = ?;";
 
     public EmployeeDAO() {}
 
@@ -110,10 +109,10 @@ public class EmployeeDAO {
              PreparedStatement statement = connection.prepareStatement(UPDATE_EMPLOYEE_SQL)) {
             statement.setString(1, employee.getFirst_Name());
             statement.setString(2, employee.getLast_Name());
-            statement.setString(3, employee.getDesignation());
-            statement.setString(4, employee.getDOB());
-            statement.setString(5, employee.getEmail());
-            statement.setString(6, employee.getMobile_No());
+            statement.setString(3, employee.getDesignation()); 
+            statement.setString(4, employee.getDOB()); 
+            statement.setString(5, employee.getEmail()); 
+            statement.setString(6, employee.getMobile_No()); 
             statement.setInt(7, employee.getEmployee_No());
             rowUpdated = statement.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -121,6 +120,7 @@ public class EmployeeDAO {
         }
         return rowUpdated;
     }
+
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

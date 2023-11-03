@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Users\ganes\Downloads\mysql-connector-j-8.1.0 (1)\mysql-connector-j-8.1.0"/>
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Users\ganes\AppData\Local\Microsoft\Windows\INetCache\IE\Q32AXH1P"/>
 	<item key="org.eclipse.jdt.ui.last.selected.jre.kind2" value="2"/>
 	<item key="org.eclipse.jdt.ui.last.selected.execution.enviroment" value="JavaSE-17"/>
 	<section name="JavaElementSearchActions">
@@ -102,5 +102,11 @@
 		<item key="updateTextualMatches" value="false"/>
 		<item key="updateQualifiedNames" value="false"/>
 		<item key="patterns" value="*"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.typehierarchy.QuickHierarchy">
+		<item key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_WIDTH" value="500"/>
+		<item key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_HEIGHT" value="360"/>
+		<item key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_SIZE" value="true"/>
+		<item key="org.eclipse.jdt.internal.ui.typehierarchy.HierarchyInformationControlDIALOG_USE_PERSISTED_LOCATION" value="false"/>
 	</section>
 </section>

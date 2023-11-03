@@ -8,7 +8,6 @@ import entity.Member;
 
 public class MemberDao {
 	// Data Access Object for the Member Class
-	
 	public static Connection getConnection() {
 		// Creates connection to the database, will be called from other functions
 		
@@ -41,7 +40,7 @@ public class MemberDao {
 			ps.setString(3, m.getEmail());
 			ps.setInt(4, m.getAge());
 			
-			status = ps.executeUpdate(); // Execute the Query & assign status
+			status = ps.executeUpdate(); // Execute the Query 
 			
 			con.close(); // Close the connection
 		} catch (SQLException e) {
@@ -127,39 +126,29 @@ public class MemberDao {
 		
 		return m;
 	}
-	
-	public static List<Member> getAllMembers() {
-	    List<Member> list = new ArrayList<Member>();
-	    Connection con = MemberDao.getConnection();
-	    try {
-	        PreparedStatement ps = con.prepareStatement("SELECT * FROM Member ORDER BY id");
-	        ResultSet rs = ps.executeQuery();
 
-	        while (rs.next()) {
-	            Member m = new Member();
-	            m.setId(rs.getInt(1));
-	            m.setName(rs.getString(2));
-	            m.setEmail(rs.getString(3));
-	            m.setAge(rs.getInt(4));
-	            list.add(m);
-	        }
-	        con.close();
+	    public static List<Member> getAllMembers() {
+	        List<Member> list = new ArrayList<>();
+	        Connection con = MemberDao.getConnection();
+	        try {
+	            PreparedStatement ps = con.prepareStatement("SELECT * FROM Member ORDER BY id");
+	            ResultSet rs = ps.executeQuery();
 
-	        // Print the list values to the console
-	        for (Member member : list) {
-	            System.out.println("ID: " + member.getId());
-	            System.out.println("Name: " + member.getName());
-	            System.out.println("Email: " + member.getEmail());
-	            System.out.println("Age: " + member.getAge());
-	            System.out.println("-----------");
+	            while (rs.next()) {
+	                Member member = new Member();
+	                member.setId(rs.getInt("id"));
+	                member.setName(rs.getString("name"));
+	                member.setEmail(rs.getString("email"));
+	                member.setAge(rs.getInt("age"));
+	                list.add(member);
+	            }
+	            con.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
 	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
+
+	        return list;
 	    }
-
-	    return list;
-	    
 	}
 
 
-}

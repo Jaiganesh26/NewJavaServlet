@@ -90,19 +90,19 @@ public class EmployeeServlet extends HttpServlet {
         String Mobile_No = request.getParameter("Mobile_No");
         Employee newEmployee = new Employee(First_Name, Last_Name, Designation, DOB, Email, Mobile_No);
         employeeDAO.insertEmployee(newEmployee);
-        response.sendRedirect("/list");
+        response.sendRedirect("list");
     }
 
     private void updateEmployee(HttpServletRequest request, HttpServletResponse response)
             throws IOException, SQLException {
-        int Employee_No = Integer.parseInt(request.getParameter("Employee_No"));
         String First_Name = request.getParameter("First_Name");
         String Last_Name = request.getParameter("Last_Name");
         String Designation = request.getParameter("Designation");
         String DOB = request.getParameter("DOB");
         String Email = request.getParameter("Email");
         String Mobile_No = request.getParameter("Mobile_No");
-        Employee updatedEmployee = new Employee(Employee_No, First_Name, Last_Name, Designation, DOB, Email, Mobile_No);
+        int Employee_No = Integer.parseInt(request.getParameter("Employee_No"));
+        Employee updatedEmployee = new Employee(Employee_No,First_Name, Last_Name, Designation, DOB, Email, Mobile_No);
         employeeDAO.updateEmployee(updatedEmployee);
         response.sendRedirect("list");
     }

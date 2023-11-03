@@ -5,3 +5,42 @@ Sep 27, 2023 11:39:20.56 [11520:13192:0927/113920.514:ERROR:connection_factory_i
 Sep 27, 2023 12:09:55.12 [11520:13192:0927/120955.051:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
 Sep 27, 2023 12:29:21.10 [11520:13192:0927/122921.107:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
 Sep 27, 2023 13:50:20.50 [11520:14752:0927/135020.455:ERROR:device_event_log_impl.cc(225)] [13:50:20.455] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+
+Oct 06, 2023 10:18:22.53 NEW SESSION
+Oct 06, 2023 10:18:22.58 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 06, 2023 11:48:50.58 [13916:11364:1006/114850.559:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 06, 2023 12:10:39.73 [13916:11364:1006/121039.710:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 06, 2023 13:25:29.61 [13916:13876:1006/132529.606:ERROR:CONSOLE(337)] "Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('chrome-untrusted://new-tab-page') does not match the recipient window's origin ('chrome://new-tab-page').", source: chrome://new-tab-page/shared.rollup.js (337)
+Oct 06, 2023 13:38:36.98 [13916:11364:1006/133836.973:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 06, 2023 13:41:24.40 [13916:11364:1006/134124.408:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
+Oct 06, 2023 13:50:46.19 [13916:11364:1006/135046.188:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 06, 2023 14:46:05.52 [13916:11364:1006/144605.521:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 06, 2023 16:38:05.63 [13916:11364:1006/163805.501:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 06, 2023 17:04:02.57 [13916:11364:1006/170402.504:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 06, 2023 17:28:18.44 [13916:11364:1006/172818.449:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+Oct 13, 2023 18:22:21.75 NEW SESSION
+Oct 13, 2023 18:22:23.50 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 13, 2023 18:27:45.14 [1520:13384:1013/182745.132:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+Oct 20, 2023 10:33:13.76 NEW SESSION
+Oct 20, 2023 10:33:13.90 [14084:16156:1020/103313.740:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 20, 2023 10:34:04.54 [14084:16156:1020/103404.540:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 20, 2023 14:51:17.57 [14084:16156:1020/145117.560:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 20, 2023 15:39:38.80 [14084:11444:1020/153938.790:ERROR:CONSOLE(340)] "Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('chrome-untrusted://new-tab-page') does not match the recipient window's origin ('chrome://new-tab-page').", source: chrome://new-tab-page/shared.rollup.js (340)
+Oct 20, 2023 18:01:49.76 [14084:16156:1020/180149.748:ERROR:mcs_client.cc(750)] Received close command, resetting connection.
+
+Oct 24, 2023 10:03:41.44 NEW SESSION
+Oct 24, 2023 10:03:41.96 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Oct 24, 2023 12:35:13.36 [3620:7896:1024/123513.340:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 24, 2023 14:26:47.20 [3620:7896:1024/142647.124:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 24, 2023 15:10:08.21 [3620:7896:1024/151008.201:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 24, 2023 17:02:26.14 [3620:7896:1024/170226.002:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Oct 24, 2023 17:24:47.63 [3620:7896:1024/172447.615:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+Nov 02, 2023 10:20:00.64 NEW SESSION
+Nov 02, 2023 10:20:01.59 [9892:14420:1102/102000.377:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+Nov 03, 2023 11:00:29.36 NEW SESSION
+Nov 03, 2023 11:00:30.42 [12228:6928:1103/110029.068:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+Nov 03, 2023 11:29:04.08 [12228:6928:1103/112904.083:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
