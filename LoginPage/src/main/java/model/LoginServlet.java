@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("jwtToken", token);
 
                 // Set user details as attributes in the request
-                request.setAttribute("emaill", user.getEmail());
+                request.setAttribute("email", user.getEmail());
                 request.setAttribute("firstName", user.getFirstName());
                 request.setAttribute("lastName", user.getLastName());
                 request.setAttribute("address", user.getAddress());
@@ -51,6 +51,8 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("zipCode", user.getZipCode());
                 request.setAttribute("phoneNumber", user.getPhoneNumber());
                 request.setAttribute("dob", user.getDob());
+                request.setAttribute("imageFileName",user.getImageFileName());
+                
 
                 // Forward to the user details JSP
                 if(token!=null) {
@@ -58,14 +60,11 @@ public class LoginServlet extends HttpServlet {
                 }else
                     response.sendRedirect("registration.jsp");
 
-           }    else {
-                // Authentication failed
-                Logger logger = Logger.getLogger(LoginServlet.class.getName());
-                logger.info("User authentication failed for email: " + email);
-
-                // Redirect to the registration JSP page
-                response.sendRedirect("registration.jsp");
-            }
+           } else {
+               // Redirect to the login JSP page with an error message
+               request.setAttribute("errorMessage", "User not found. Please check your credentials.");
+               request.getRequestDispatcher("login.jsp").forward(request, response);
+           }
 
         } catch (NoSuchAlgorithmException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -91,7 +90,7 @@ public class LoginServlet extends HttpServlet {
             throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Crud", "root", "1326");
-        String query = "SELECT id, firstName, lastName, email, address, city, state, zipCode, phoneNumber, dob FROM decrypt WHERE email = ? AND password = ?";
+        String query = "SELECT id, firstName, lastName, email, address, city, state, zipCode, phoneNumber, dob, imageFileName FROM decrypt WHERE email = ? AND password = ?";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         preparedStatement.setString(1, email);
         preparedStatement.setString(2, hashedPassword);
@@ -108,8 +107,9 @@ public class LoginServlet extends HttpServlet {
             String zipCode = result.getString("zipCode");
             String phoneNumber = result.getString("phoneNumber");
             String dob = result.getString("dob");
+            String imageFileName=result.getString("imageFileName");
 
-            return new User(id, email1, firstName, lastName, address, city, state, zipCode, phoneNumber, dob);
+            return new User(id, email1, firstName, lastName, address, city, state, zipCode, phoneNumber, dob,imageFileName);
         }
         return null;
     }

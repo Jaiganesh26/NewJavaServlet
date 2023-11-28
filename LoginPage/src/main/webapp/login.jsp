@@ -1,80 +1,150 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-        /* Center-align the form */
-        .container {
+        /* Styles for the login page */
+        body {
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
         }
 
-        /* Style the form */
-        .form-container {
-            background-color: #f3f3f3;
-            padding: 50px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        .container {
+            background-color: #fff;
+            padding-left:10px;
+            padding-right:10px;
+            padding-top:30px;
+            padding-bottom:30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
         }
 
-        /* Style form inputs and labels */
+        .header {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
         .form-group {
-            margin: 10px 0;
+            margin-top: 7px;
+            position: relative;
         }
 
-        label {
-            display: block;
-            font-weight: bold;
+        .form-field {
+            position: relative;
+        }
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 30px;
+            color: #999;
+        }
+
+        .icon i {
+            font-size: 18px;
         }
 
         input[type="text"],
-        input[type="text"] {
-            width: 100%;
-            padding: 20px;
+        input[type="email"],
+        input[type="password"] {
+            padding-left: 40px;
+            width: calc(100% - 40px);
+            border-radius: 4px;
             border: 1px solid #ccc;
-            border-radius: 3px;
+            height: 50px;
+            box-sizing: border-box;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 40px;
+            transform: translateY(-50%);
+            cursor: pointer;
         }
 
         input[type="submit"] {
             background-color: #007bff;
-            color: #fff;
+            color: white;
             padding: 10px 20px;
             border: none;
-            border-radius: 20px;
+            border-radius: 4px;
             cursor: pointer;
         }
-        
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="form-container">
-            <h1>Login</h1>
+        <div class="form-container registration-card">
+            <h1 class="header">Login</h1>
             <form action="LoginServlet" method="post">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" required>
+                <div class="form-group form-field">
+                    <div class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="password" required>
-                </div><br>
-               <div class="form-group">
-                  <input type="submit" value="Login">
+                <div class="form-group form-field">
+                    <div class="icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <span class="password-toggle" onclick="togglePassword()">
+                        <i id="toggleIcon" class="fas fa-eye"></i>
+                    </span>
                 </div>
-            </form>
-            <!-- Add a "Register" button here -->
-            <div class="form-group">
-                <a href="registration.jsp">
-                    <button type="button" style="position:absolute;top:415px;right:590px;color:#007bff;border-radius: 20px;padding: 5px 10px;cursor: pointer;">Register</button>
-                </a>
+                 <% String errorMessage = (String) request.getAttribute("errorMessage");
+                 if (errorMessage != null && !errorMessage.isEmpty()) { %>
+                 <p style="color: red;"><%= errorMessage %></p>
+                 <% } %>
+                <div class="form-group form-field">
+                    <input type="submit" value="Login">
+                </div>
+            </form><br>
+          
+            <div>
+                Don't have an account? <a href="registration.jsp">Register</a>
             </div>
         </div>
     </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+        
+    </script>
 </body>
 </html>

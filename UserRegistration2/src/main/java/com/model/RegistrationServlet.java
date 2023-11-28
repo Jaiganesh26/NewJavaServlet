@@ -26,7 +26,7 @@ public class RegistrationServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        
+        System.out.println(email);
             // Load the MySQL JDBC driver
             try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -44,7 +44,7 @@ public class RegistrationServlet extends HttpServlet {
                 	pst.setString(3, email);
 
                     int rowsInserted = pst.executeUpdate();
-                  //  System.out.println(rowsInserted);
+                   System.out.println(rowsInserted);
                     if (rowsInserted > 0) {
                         response.sendRedirect("registration_success.jsp");
                     } else {
