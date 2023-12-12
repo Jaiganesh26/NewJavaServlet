@@ -8,10 +8,8 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -37,17 +35,13 @@ public class RegisterServlet extends HttpServlet {
         String zipCode = request.getParameter("zipCode");
         String phoneNumber = request.getParameter("phoneNumber");
         String dob = request.getParameter("dob");
+        String country = request.getParameter("country");
 
-        System.out.println("In do post method of Add Image servlet.");
         Part file = request.getPart("image");
-
-        String imageFileName = file.getSubmittedFileName(); // get selected image file name
-        System.out.println("Selected Image File Name : " + imageFileName);
-
-        String uploadPath = "C:/Users/ganes/eclipse-workspace/LoginPage/src/main/webapp/image/" + imageFileName; // upload path where we have to upload our actual image
-        System.out.println("Upload Path : " + uploadPath);
-
-        // Uploading our selected image into the images folder
+        String imageFileName = file.getSubmittedFileName();
+        String uploadPath = "C:/Users/ganes/eclipse-workspace/LoginPage/src/main/webapp/image/" + imageFileName;
+        System.out.println("Selected Image File Name : " + imageFileName); 
+        
         try {
             FileOutputStream fos = new FileOutputStream(uploadPath);
             InputStream is = file.getInputStream();
@@ -61,19 +55,19 @@ public class RegisterServlet extends HttpServlet {
         }
 
         try {
-            // Hash the password
-            String hashedPassword = hashPassword(password);
-
-            // Save user details to the database
-            boolean success = registerUser(email, hashedPassword, firstName, lastName, address, city, state, zipCode,
-                    phoneNumber, dob, imageFileName);
-
-            if (success) {
-                // Redirect to the login page or send a success response
-                response.sendRedirect("login.jsp");
+            if (isEmailExists(email)) {
+                request.setAttribute("errorMessage", "Email already exists. Please use a different email.");
+                request.getRequestDispatcher("registration.jsp").forward(request, response);
             } else {
-                // Registration failed, redirect to the registration page or send an error response
-                response.sendRedirect("registration.jsp");
+                String hashedPassword = hashPassword(password);
+                boolean success = registerUser(email, hashedPassword, firstName, lastName, address, city, state,
+                        zipCode, phoneNumber, dob, imageFileName,country);
+
+                if (success) {
+                    response.sendRedirect("login.jsp");
+                } else {
+                    response.sendRedirect("registration.jsp");
+                }
             }
         } catch (NoSuchAlgorithmException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -93,9 +87,24 @@ public class RegisterServlet extends HttpServlet {
         return hashedPassword.toString();
     }
 
-    private boolean registerUser(String email, String hashedPassword, String firstName, String lastName, String address,
-            String city, String state, String zipCode, String phoneNumber, String dob, String imageFileName)
-            throws SQLException, ClassNotFoundException {
+    private boolean isEmailExists(String email) throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Crud", "root", "1326");
+        String query = "SELECT COUNT(*) FROM decrypt WHERE email=?";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1, email);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        int count = resultSet.getInt(1);
+
+        conn.close();
+        return count > 0;
+    }
+
+    private boolean registerUser(String email, String hashedPassword, String firstName, String lastName,
+            String address, String city, String state, String zipCode, String phoneNumber, String dob,
+            String imageFileName, String country) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Crud", "root", "1326");
         String query = "INSERT INTO decrypt (email, password, firstName, lastName, address, city, state, zipCode, phoneNumber, dob, imageFileName) "

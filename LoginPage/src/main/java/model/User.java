@@ -12,8 +12,33 @@ public class User {
     private String phoneNumber;
     private String dob;
     private String imageFileName;
+    private String country;
 
 
+
+	public User(int id, String email, String firstName, String lastName, String address, String city, String state,
+			String zipCode, String phoneNumber, String dob, String imageFileName) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zipCode = zipCode;
+		this.phoneNumber = phoneNumber;
+		this.dob = dob;
+		this.imageFileName = imageFileName;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
 
 	public String getImageFileName() {
 		return imageFileName;
@@ -98,23 +123,7 @@ public class User {
 	public String getDob() {
 		return dob;
 	}
-
-	public User(int id, String email, String firstName, String lastName, String address, String city, String state,
-			String zipCode, String phoneNumber, String dob, String imageFileName) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zipCode = zipCode;
-		this.phoneNumber = phoneNumber;
-		this.dob = dob;
-		this.imageFileName = imageFileName;
-	}
-
+	
 	public void setDob(String dob) {
 		this.dob = dob;
 	}

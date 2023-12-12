@@ -5,10 +5,9 @@
     <title>Registration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script defer src="./index.js"></script>
 <style>
 body {
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(to right,#0f2027, #203a43, #2c5364);
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -136,7 +135,7 @@ input[type="file"]::-webkit-file-upload-button {
          city: "Please enter your city",
          state: "Please enter your state",
          zipCode: "Please enter your ZIP code",
-         phoneNumber: "Please enter your phone number",
+         phoneNumber: "Please enter valid phone number",
          dob: "Please enter your date of birth",
          image: "Please upload an image"
      };
@@ -148,8 +147,10 @@ input[type="file"]::-webkit-file-upload-button {
                  setErrorMessage(inputs[i], errorMessages[field]);
                  isValid = false;
              } else {
-                 clearErrorMessage(inputs[i]);
                  if (field === "email" && !isValidEmail(inputs[i].value.trim())) {
+                     setErrorMessage(inputs[i], errorMessages[field]);
+                     isValid = false;
+                 } else if (field === "phoneNumber" && !isValidPhoneNumber(inputs[i].value.trim())) {
                      setErrorMessage(inputs[i], errorMessages[field]);
                      isValid = false;
                  } else {
@@ -189,7 +190,9 @@ input[type="file"]::-webkit-file-upload-button {
  function isValidEmail(email) {
      return /\S+@\S+\.\S+/.test(email);
  }
-
+ function isValidPhoneNumber(phoneNumber) {
+     return /^\d{10}$/.test(phoneNumber);
+ }
  function togglePassword() {
      const passwordField = document.getElementById('password');
      const toggleIcon = document.getElementById('toggleIcon');
@@ -204,25 +207,19 @@ input[type="file"]::-webkit-file-upload-button {
          toggleIcon.classList.add('fa-eye');
      }
  }
-	function togglePassword() {
-	    const passwordField = document.getElementById('password');
-	    const toggleIcon = document.getElementById('toggleIcon');
-
-	    if (passwordField.type === 'password') {
-	        passwordField.type = 'text';
-	        toggleIcon.classList.remove('fa-eye');
-	        toggleIcon.classList.add('fa-eye-slash');
-	    } else {
-	        passwordField.type = 'password';
-	        toggleIcon.classList.remove('fa-eye-slash');
-	        toggleIcon.classList.add('fa-eye');
-	    }
-	}
 </script>
 </head>
 <body>
     <div class="container">
             <h1 class="header">Registration</h1>
+         <% 
+            String errorMessage = (String) request.getAttribute("errorMessage");
+            if (errorMessage != null) { 
+        %>
+            <div class="error-message">
+                <%= errorMessage %>
+            </div>
+        <% } %>
             <form action="RegisterServlet" method="post" enctype="multipart/form-data" onsubmit="return validateInputs()">
                 <div class="form-group form-field">
                     <div class="icon">

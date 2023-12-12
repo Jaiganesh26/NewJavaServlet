@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -68,7 +67,6 @@ public class LoginServlet extends HttpServlet {
 
         } catch (NoSuchAlgorithmException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-
             // Redirect to the login JSP page (or any error page)
             response.sendRedirect("login.jsp");
         }
@@ -122,8 +120,8 @@ public class LoginServlet extends HttpServlet {
                 .setIssuedAt(now)
                 .setExpiration(expiration)
                 .claim("email", email)
-                .claim("sub", Integer.toString(userId)) // Set the subject claim
-                .signWith(SignatureAlgorithm.HS256, "1234") // Replace with your secret key
+                .claim("sub", Integer.toString(userId))
+                .signWith(SignatureAlgorithm.HS256, "1234")
                 .compact();
     }
 }
